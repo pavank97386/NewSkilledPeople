@@ -8,9 +8,10 @@ router.post('/', (req,res)=>{
 	 var data = new newUserSchema({
 	 	name:req.body.name,
 	 	emailid:req.body.emailid,
-	 	mobile:req.body.mobile
+	 	mobile:req.body.mobile,
+	 	password:req.body.password
 	 })
- 	     console.log(data)
+ 	      
  	     data.save()
  		 .then(data=>{
  		 	res.json(data)
