@@ -1,26 +1,26 @@
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser');
+ var express = require('express')
+
+ var app =  express();
+ require('dotenv/config')
 var mongoose = require('mongoose')
-require('dotenv/config')
+const bodyParser = require("body-parser")
 
-//middlewares
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-
-//import routes
-const postRoutes = require('./routes/posts')
-const signup = require('./routes/signup')
-
-
-//connect Db 
-app.use('/posts',postRoutes)
-app.use('/signup',signup)
-mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },()=>{
-	console.log("conected ")
-})
+//routes 
+ var signup = require('./routes/signup')
 
  
+//middle wares
 
-app.listen(process.env.PORT)
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/signup',signup)
+
+//connect tp db
+mongoose.connect("mongodb://127.0.0.1/SocialApp", { useNewUrlParser: true },()=>{
+	console.log("Connected to DB Pavan")
+})
+
+
+ app.listen(4000,()=>{
+ 	console.log("connected to 4000")
+ })
