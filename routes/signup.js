@@ -4,20 +4,21 @@ var router = express.Router()
 
 var newUserSchema = require('../schema/user')
 
-router.post('/',(req,res)=>{
+router.post('/', (req,res)=>{
 	 var data = new newUserSchema({
 	 	name:req.body.name,
 	 	emailid:req.body.emailid,
 	 	mobile:req.body.mobile
 	 })
- 	data.save()
- 	.then(datas=>{
- 		res.json(datas)
- 		 
- 	})
- 	.catch(err =>{
- 		res.json({"mesasge":err})
- 	})
+ 	     console.log(data)
+ 	     data.save()
+ 		 .then(data=>{
+ 		 	res.json(data)
+ 		 })
+ 		 .catch(err=>{
+ 		 	res.json({'mess':err})
+ 		 })
+ 	 
  	 
 })
 

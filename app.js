@@ -4,6 +4,8 @@
  require('dotenv/config')
 var mongoose = require('mongoose')
 const bodyParser = require("body-parser")
+var cors = require('cors')
+
 
 //routes 
  var signup = require('./routes/signup')
@@ -11,8 +13,9 @@ const bodyParser = require("body-parser")
  
 //middle wares
 
-
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
+app.use(bodyParser.json())
+ 
 app.use('/signup',signup)
 
 //connect tp db
