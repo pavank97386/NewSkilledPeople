@@ -8,7 +8,7 @@ router.get('/',async(req,res)=>{
 		emailid : req.body.emailid,
 		password :req.body.password 
 	} 
-console.log(getCredential)
+ 
 	try{
 		var result = await getSignupSchema.findOne(getCredential)
 		if(result)
